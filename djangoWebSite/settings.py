@@ -49,7 +49,9 @@ else:
     SECRET_KEY = os.environ.get('SECRET_KEY')
     import dj_database_url
     db_from_env = dj_database_url.config()
-    DATABASES['default'].update(db_from_env)
+    DATABASES = {
+        'default': db_from_env
+    }
     ALLOWED_HOSTS = ['*']
 
 INSTALLED_APPS = [
