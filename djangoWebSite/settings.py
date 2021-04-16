@@ -12,14 +12,12 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 
 import os
 import dj_database_url
+from socket import gethostname
 
-from dj_static import Cling
-from django.core.wsgi import get_wsgi_application
-
-os.environ.setdefault("DJANGO_SETTINGS_MODULE", "sample_app.settings")
-application = Cling(get_wsgi_application())
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "djangoWebSite.settings")
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
+# BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
@@ -27,15 +25,32 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'eu49rp1j&c7o9zgcub5zafeeu++cy(l-v9+5*06pjlhz@e6#yf'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-
-ALLOWED_HOSTS = ['*']
-
 
 # Application definition
+
+print(gethostname())
+
+if "MacBook-Pro-3.local" in gethostname():
+    # デバッグ環境
+    DEBUG = True
+    SECRET_KEY = 'dummy'
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        }
+    }
+    ALLOWED_HOSTS = [] # よくわからんけど、これも大事らしい
+else:
+    # 本番環境
+    DEBUG = False
+    SECRET_KEY = os.environ.get('SECRET_KEY')
+    import dj_database_url
+    db_from_env = dj_database_url.config()
+    DATABASES['default'].update(db_from_env)
+    ALLOWED_HOSTS = ['*']
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -81,15 +96,6 @@ WSGI_APPLICATION = 'djangoWebSite.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
-db_from_env = dj_database_url.config()
-DATABASES['default'].update(db_from_env)
-
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-#     }
-# }
 
 
 # Password validation
