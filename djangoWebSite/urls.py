@@ -23,7 +23,7 @@ from .sitemaps import (
     StaticViewSitemap,
 )
 from django.contrib.flatpages.sitemaps import FlatPageSitemap
-
+from django.conf.urls import url
 
 sitemaps = {
     'blog': BlogPostSitemap,
@@ -36,6 +36,7 @@ urlpatterns = [
     path('', include('blog.urls')),
     path('sitemap.xml', sitemap, {'sitemaps': sitemaps}, name='sitemap'),
     path('pages/', include('django.contrib.flatpages.urls')),
+    url(r'mdeditor/', include('mdeditor.urls'))
 ]
 
 if settings.DEBUG:

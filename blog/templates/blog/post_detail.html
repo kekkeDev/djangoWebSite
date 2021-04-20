@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load markdown_extras %}
 
 {% block title %}{{ object.title }} | {{ block.super }}{% endblock %}
 {% block description %}{{ object.description }}{% endblock %}
@@ -11,7 +12,7 @@
         <h1>{{ object.title }}</h1>
         <p><small class="text-muted">{{ object.published_at|date }}</small></p>
         <hr>
-        {{ object.content|safe }}
+        {{ object.content|markdown|safe }}
         <hr>
         <p>{{ object.category.name }}</p>
         {% for tag in object.tags.all %}

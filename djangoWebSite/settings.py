@@ -69,8 +69,15 @@ INSTALLED_APPS = [
     'django.contrib.sites',
     'django.contrib.sitemaps',
     'django.contrib.flatpages',
+    'mdeditor',
 ]
 
+X_FRAME_OPTIONS = 'SAMEORIGIN'
+MDEDITOR_CONFIGS = {
+    'default': {
+        'language': 'en',
+    }
+}
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
