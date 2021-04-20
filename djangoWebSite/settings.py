@@ -14,12 +14,10 @@ import os
 import dj_database_url
 from socket import gethostname
 
-os.environ.setdefault("DJANGO_SETTINGS_MODULE", "djangoWebSite.settings")
-
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
-# BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "djangoWebSite.settings")
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
@@ -30,29 +28,33 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # Application definition
 
-print(gethostname())
-
 if "MacBook-Pro-3.local" in gethostname():
     # デバッグ環境
     DEBUG = True
     SECRET_KEY = 'dummy'
+    ALLOWED_HOSTS = []
+
+    # Database
+    # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.sqlite3',
             'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
         }
     }
-    ALLOWED_HOSTS = [] # よくわからんけど、これも大事らしい
+
 else:
     # 本番環境
     DEBUG = False
     SECRET_KEY = os.environ.get('SECRET_KEY')
+    ALLOWED_HOSTS = ['*']
+
     import dj_database_url
+
     db_from_env = dj_database_url.config()
     DATABASES = {
         'default': db_from_env
     }
-    ALLOWED_HOSTS = ['*']
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -61,7 +63,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'app.apps.AppConfig',  # AppConfigを追加
+    'blog.apps.BlogConfig',
+    'django.contrib.sites',
+    'django.contrib.sitemaps',
+    'django.contrib.flatpages',
 ]
 
 MIDDLEWARE = [
@@ -80,7 +85,7 @@ ROOT_URLCONF = 'djangoWebSite.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -88,18 +93,13 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'djangoWebSite.context_processors.common',
             ],
         },
     },
 ]
 
 WSGI_APPLICATION = 'djangoWebSite.wsgi.application'
-
-
-# Database
-# https://docs.djangoproject.com/en/3.0/ref/settings/#databases
-
-
 
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
@@ -137,9 +137,14 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
-STATIC_URL = '/static/'
-STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, "static"),
-)
+MEDIA_ROOT = os.path.join(BASE_DIR, 'staticfiles', 'media_root')
+MEDIA_URL = '/media/'
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles', 'static_root')
+STATIC_URL = '/static/'
+
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static'),
+]
+
+SITE_ID = 1
