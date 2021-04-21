@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load markdown_extras %}
 
 {% block title %}{{ object.title }} | {{ block.super }}{% endblock %}
 {% block description %}{{ object.description }}{% endblock %}
@@ -10,7 +11,7 @@
       <article class="blog-area">
         <h1>{{ flatpage.title }}</h1>
         <hr>
-        {{ flatpage.content|safe }}
+        {{ flatpage.content|markdown|safe }}
         <p>{{ object.category.name }}</p>
         {% for tag in object.tags.all %}
         {{ tag.name }}

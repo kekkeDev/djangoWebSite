@@ -56,6 +56,8 @@ else:
         'default': db_from_env
     }
 
+    GOOGLE_ANALYTICS_TRACKING_ID = 'UA-173456770-1'
+
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -67,8 +69,15 @@ INSTALLED_APPS = [
     'django.contrib.sites',
     'django.contrib.sitemaps',
     'django.contrib.flatpages',
+    'mdeditor',
 ]
 
+X_FRAME_OPTIONS = 'SAMEORIGIN'
+MDEDITOR_CONFIGS = {
+    'default': {
+        'language': 'en',
+    }
+}
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -94,6 +103,7 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'djangoWebSite.context_processors.common',
+                'djangoWebSite.context_processors.google_analytics',
             ],
         },
     },
