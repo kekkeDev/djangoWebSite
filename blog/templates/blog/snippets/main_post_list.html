@@ -1,21 +1,23 @@
+{% load markdown_extras %}
 {% for post in object_list %}
 {% if user.is_authenticated or post.is_public %}
-
 <div class="card mb-3">
   <div class="row no-gutters">
     <div class="col-md-8">
       <div class="card-body">
-        <h5 class="card-title">{{ post.title }}</h5>
+        <h4 class="card-title">{{ post.title }}</h4>
         {% if not post.is_public %}
         <h5><span class="badge badge-secondary">下書き</span></h5>
         {% endif %}
-        <p class="card-text"><small class="text-muted">{{ post.published_at|date }}</small></p>
+        <p class="card-text"><small class="text-muted">{{ post.published_at|date:"Y.m.j" }}</small></p>
         <a href="{% url 'blog:post_detail' post.id %}" class="stretched-link"></a>
-        <p class="col-8 text-truncate">{{ post.content }}</p>
+        {% for tag in post.tags.all %}
+        <a class="btn btn-outline-secondary btn-floating btn-sm m-1" href="{% url 'blog:tag_post' tag.slug %}" role="button"><i class="fas fa-tags"> {{ tag.name }}</i></a>
+        {% endfor %}
       </div>
     </div>
     {% if post.image %}
-    <div class="col-md-4">
+    <div class="col-md-4 thumbnail">
       <img class="bd-placeholder-img card-img-bottom" src="{{ post.image.url }}" alt="{{ post.title }}">
     </div>
     {% endif %}

@@ -9,26 +9,33 @@
   <div class="row">
     <main class="col-md-8 mx-auto">
       <article class="blog-area">
+        {% if post.image %}
+          <div class="jumbotron">
+            <img class="bd-placeholder-img card-img-bottom main-thumbnail" src="{{ post.image.url }}" alt="{{ post.title }}">
+          </div>
+        {% endif %}
         <h1>{{ object.title }}</h1>
-        <p><small class="text-muted">{{ object.published_at|date }}</small></p>
+        <p><small class="text-muted">{{ object.published_at|date:"Y.m.j" }}</small></p>
         <hr>
         {{ object.content|markdown|safe }}
+          <a class="btn btn-outline-dark btn-floating m-1" href="https://twitter.com/share?text={{ object.title }}&url={{ request.scheme }}://{{ request.get_host }}{% url 'blog:post_detail' post.id %}" rel="nofollow" target="_blank">
+            <i class="fab fa-twitter"></i>
+          </a>
+<!--          <a href="https://twitter.com/share" class="twitter-share-button" data-url="{{ request.scheme }}://{{ request.get_host }}{% url 'blog:post_detail' post.id %}" data-via="kekkedev" data-lang="en">Tweet</a>-->
         <hr>
-        <p>{{ object.category.name }}</p>
+<!--        <p>{{ object.category.name }}</p>-->
         {% for tag in object.tags.all %}
-        {{ tag.name }}
+        <a class="btn btn-outline-secondary btn-floating btn-sm m-1" href="{% url 'blog:tag_post' tag.slug %}" role="button"><i class="fas fa-tags"> {{ tag.name }}</i></a>
         {% endfor %}
       </article>
-      <article class="comment-area">
-        <a class="btn btn-primary my-3" href="{% url 'blog:comment_form' post.pk %}">コメントを投稿する</a>
-        {% include "blog/snippets/comments.html" %}
-      </article>
+<!--      <article class="comment-area">-->
+<!--        <a class="btn btn-primary my-3" href="{% url 'blog:comment_form' post.pk %}">コメントを投稿する</a>-->
+<!--        {% include "blog/snippets/comments.html" %}-->
+<!--      </article>-->
     </main>
-<!--
     <aside class="col-md-4">
       {% include "blog/snippets/sidebar.html" %}
     </aside>
--->
   </div>
 </div>
 {% endblock %}

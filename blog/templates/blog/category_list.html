@@ -4,7 +4,6 @@
 {% block description %}カテゴリ一覧ページです。{% endblock %}
 
 {% block content %}
-<h1>カテゴリ一覧</h1>
 <ul>
   {% for category in object_list %}
   <li><a href="{% url 'blog:category_post' category.slug %}">{{ category.name }} ({{ category.num_posts }})</a></li>

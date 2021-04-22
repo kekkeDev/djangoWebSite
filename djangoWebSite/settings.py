@@ -56,8 +56,6 @@ else:
         'default': db_from_env
     }
 
-    GOOGLE_ANALYTICS_TRACKING_ID = 'UA-173456770-1'
-
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -65,11 +63,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'blog.apps.BlogConfig',
     'django.contrib.sites',
     'django.contrib.sitemaps',
     'django.contrib.flatpages',
     'mdeditor',
+    'blog.apps.BlogConfig',
 ]
 
 X_FRAME_OPTIONS = 'SAMEORIGIN'
@@ -80,13 +78,14 @@ MDEDITOR_CONFIGS = {
 }
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware',  # この行を追加
+    'django.contrib.sites.middleware.CurrentSiteMiddleware',
 ]
 
 ROOT_URLCONF = 'djangoWebSite.urls'
@@ -103,7 +102,7 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'djangoWebSite.context_processors.common',
-                'djangoWebSite.context_processors.google_analytics',
+                'djangoWebSite.context_processors.settings_param',
             ],
         },
     },
@@ -158,3 +157,4 @@ STATICFILES_DIRS = [
 ]
 
 SITE_ID = 1
+ROLEPERMISSIONS_REGISTER_ADMIN = True

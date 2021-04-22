@@ -61,7 +61,7 @@ class TagPostView(ListView):
 class SearchPostView(ListView):
     model = Post
     template_name = 'blog/search_post.html'
-    paginate_by = 3
+    paginate_by = 10
 
     def get_queryset(self):
         query = self.request.GET.get('q', None)
