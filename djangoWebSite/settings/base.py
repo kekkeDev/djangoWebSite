@@ -27,35 +27,6 @@ os.environ.setdefault("DJANGO_SETTINGS_MODULE", "djangoWebSite.settings")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 
-# Application definition
-# if "MacBook-Pro-3.local" in gethostname():
-#     # デバッグ環境
-#     DEBUG = True
-#     SECRET_KEY = 'dummy'
-#     ALLOWED_HOSTS = []
-#
-#     # Database
-#     # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
-#     DATABASES = {
-#         'default': {
-#             'ENGINE': 'django.db.backends.sqlite3',
-#             'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-#         }
-#     }
-#
-# else:
-#     # 本番環境
-#     DEBUG = False
-#     SECRET_KEY = os.environ.get('SECRET_KEY')
-#     ALLOWED_HOSTS = ['*']
-#
-#     import dj_database_url
-#
-#     db_from_env = dj_database_url.config()
-#     DATABASES = {
-#         'default': db_from_env
-#     }
-
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
