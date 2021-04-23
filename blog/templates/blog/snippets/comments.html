@@ -4,10 +4,10 @@
   <strong>{{ comment.author }}</strong>・{{ comment.timestamp }}
   <p>{{ comment.text|linebreaksbr }}</p>
   <p>
-    <a href="{% url 'blog:reply_form' comment.pk %}">返信する</a>
+    <a href="{% url 'blog:reply_form' comment.pk %}">reply</a>
     {% if not comment.approved %}
-    ｜<a class="text-success" href="{% url 'blog:comment_approve' comment.pk %}">承認</a>
-    ｜<a class="text-danger" href="{% url 'blog:comment_remove' comment.pk %}">削除</a>
+    ｜<a class="text-success" href="{% url 'blog:comment_approve' comment.pk %}">approve</a>
+    ｜<a class="text-danger" href="{% url 'blog:comment_remove' comment.pk %}">delete</a>
     {% endif %}
   </p>
 
@@ -18,8 +18,8 @@
     <p>{{ reply.text|linebreaksbr }}</p>
     <p>
       {% if not reply.approved %}
-      <a class="text-success" href="{% url 'blog:reply_approve' reply.pk %}">承認</a>
-      ｜<a class="text-danger" href="{% url 'blog:reply_remove' reply.pk %}">削除</a>
+      <a class="text-success" href="{% url 'blog:reply_approve' reply.pk %}">approve</a>
+      ｜<a class="text-danger" href="{% url 'blog:reply_remove' reply.pk %}">delete</a>
       {% endif %}
     </p>
   </div>

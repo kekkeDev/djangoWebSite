@@ -1,6 +1,6 @@
 <form class="input-group" action="{% url 'blog:search_post' %}" method="GET">
   <input class="form-control" type="search" name="q" value="{{ request.GET.q }}" placeholder="Search" aria-label="Search">
   <span class="input-group-btn">
-    <button class="btn btn-outline-dark" type="submit">検索</button>
+    <button class="btn btn-outline-dark" type="submit"><i class="fas fa-search"></i></button>
   </span>
 </form>

@@ -143,18 +143,17 @@ class Reply(models.Model):
 #         instance.send_email_notif()
 
 class SiteDetail(models.Model):
-    """Siteと1対1で紐づくサイト詳細情報"""
     site = models.OneToOneField(Site, verbose_name='Site', on_delete=models.PROTECT)
-    title = models.CharField('タイトル', max_length=255, default='Webサイトのタイトル')
-    description = models.TextField('サイトの説明', max_length=255, default='Webサイトの説明')
-    keywords = models.CharField('サイトのキーワード', max_length=255, default='Webサイトのキーワード')
-    author = models.CharField('管理者', max_length=255, default='サンプルの管理者')
-    email = models.EmailField('管理者アドレス', max_length=255, default='your_mail@gmail.com')
-    github = models.CharField('Githubアカウント', max_length=255, blank=True)
-    twitter = models.CharField('Twitterアカウント', max_length=255, blank=True)
-    facebook = models.CharField('FaceBookアカウント', max_length=255, blank=True)
-    google_ad_html = models.TextField('アドセンスHTML', blank=True)
-    google_analytics_html = models.TextField('アナリティクスHTML', blank=True)
+    title = models.CharField('Sites title', max_length=255, default='title')
+    description = models.TextField('Sites description', max_length=255, default='description')
+    keywords = models.CharField('Sites keyword', max_length=255, default='keywords')
+    author = models.CharField('author', max_length=255, default='author')
+    email = models.EmailField('author E-mail address', max_length=255, default='your_mail@gmail.com')
+    github = models.CharField('Github account', max_length=255, blank=True)
+    twitter = models.CharField('Twitter account', max_length=255, blank=True)
+    facebook = models.CharField('FaceBook account', max_length=255, blank=True)
+    google_ad_html = models.TextField('adSense HTML', blank=True)
+    google_analytics_html = models.TextField('GA HTML', blank=True)
 
     def __str__(self):
         return self.author

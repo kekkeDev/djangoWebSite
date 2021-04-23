@@ -5,14 +5,14 @@
   <div class="row no-gutters">
     <div class="col-md-8">
       <div class="card-body">
-        <h4 class="card-title">{{ post.title }}</h4>
         {% if not post.is_public %}
-        <h5><span class="badge badge-secondary">下書き</span></h5>
+        <h5><span class="badge bg-secondary">draft</span></h5>
         {% endif %}
+        <h4 class="card-title">{{ post.title }}</h4>
         <p class="card-text"><small class="text-muted">{{ post.published_at|date:"Y.m.j" }}</small></p>
         <a href="{% url 'blog:post_detail' post.id %}" class="stretched-link"></a>
         {% for tag in post.tags.all %}
-        <a class="btn btn-outline-secondary btn-floating btn-sm m-1" href="{% url 'blog:tag_post' tag.slug %}" role="button"><i class="fas fa-tags"> {{ tag.name }}</i></a>
+        <a class="badge bg-secondary" href="{% url 'blog:tag_post' tag.slug %}" role="button"><i class="fas fa-tags"> {{ tag.name }}</i></a>
         {% endfor %}
       </div>
     </div>
@@ -26,5 +26,5 @@
 
 {% endif %}
 {% empty %}
-<p>まだ投稿はありません。</p>
+<p>no post</p>
 {% endfor %}

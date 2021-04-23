@@ -25,7 +25,7 @@
         <hr>
 <!--        <p>{{ object.category.name }}</p>-->
         {% for tag in object.tags.all %}
-        <a class="btn btn-outline-secondary btn-floating btn-sm m-1" href="{% url 'blog:tag_post' tag.slug %}" role="button"><i class="fas fa-tags"> {{ tag.name }}</i></a>
+        <a class="badge bg-secondary m-1" href="{% url 'blog:tag_post' tag.slug %}" role="button"><i class="fas fa-tags"> {{ tag.name }}</i></a>
         {% endfor %}
       </article>
 <!--      <article class="comment-area">-->
