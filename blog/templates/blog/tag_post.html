@@ -7,7 +7,6 @@
 <div class="container">
   <div class="row">
     <main class="col-md-8">
-      <p class="btn btn-outline-secondary btn-floating btn-sm m-1" href="{% url 'blog:tag_post' tag.slug %}" role="button"><i class="fas fa-tags"> {{ tag.name }}</i></p>
       {% include "blog/snippets/main_post_list.html" %}
     </main>
     <aside class="col-md-4">

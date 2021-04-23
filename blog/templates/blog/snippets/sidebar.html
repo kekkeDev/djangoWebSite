@@ -4,32 +4,53 @@
 
 <div class="card mb-3">
   <div class="card-header">
-    カテゴリ
+    ad
   </div>
   <ul class="list-group list-group-flush">
-    {% for category in categories|dictsort:"id" %}
     <li class="list-group-item d-flex justify-content-between align-items-center">
-      <a href="{% url 'blog:category_post' category.slug %}" class="card-link">{{ category.name }}</a>
-      <span class="badge bg-secondary rounded-pill">{{ category.num_posts }}</span>
+      <a href="https://px.a8.net/svt/ejp?a8mat=3BKI21+AEHOAA+3JTE+614CY" rel="nofollow" target=”_blank”>爆速でWordPress立ち上げはこちら</a>
+      <img border="0" width="1" height="1" src="https://www10.a8.net/0.gif?a8mat=3BKI21+AEHOAA+3JTE+614CY" alt="">
     </li>
-    {% endfor %}
   </ul>
 
 </div>
 
-<div class="card">
-  <div class="card-header">
-    タグ
-  </div>
-  <ul class="list-group list-group-flush">
+<!--<div class="card mb-3">-->
+<!--  <div class="card-header">-->
+<!--    Categories-->
+<!--  </div>-->
+<!--  <ul class="list-group list-group-flush">-->
+<!--    {% for category in categories|dictsort:"id" %}-->
+<!--    <li class="list-group-item d-flex justify-content-between align-items-center">-->
+<!--      <a href="{% url 'blog:category_post' category.slug %}" class="card-link">{{ category.name }}</a>-->
+<!--      <span class="badge bg-secondary rounded-pill">{{ category.num_posts }}</span>-->
+<!--    </li>-->
+<!--    {% endfor %}-->
+<!--  </ul>-->
+
+<!--</div>-->
+<div class="card mb-3">
+  <div class="card-body">
+    <h6 class="card-title">tags</h6>
     {% for tag in tags|dictsortreversed:"num_posts"|slice:":5" %}
-    <li class="list-group-item d-flex justify-content-between align-items-center">
-      <a href="{% url 'blog:tag_post' tag.slug %}" class="card-link">{{ tag.name }}</a>
-      <span class="badge bg-secondary rounded-pill">{{ tag.num_posts }}</span>
-    </li>
+      <a class="badge bg-secondary" href="{% url 'blog:tag_post' tag.slug %}" role="button"><i class="fas fa-tags"> {{ tag.name }} ({{ tag.num_posts }})</i></a>
     {% endfor %}
-  </ul>
-  <div class="card-body text-center">
-    <a href="{% url 'blog:tag_list' %}" class="card-link">すべてのタグを見る</a>
   </div>
 </div>
+
+<!--<div class="card">-->
+<!--  <div class="card-header">-->
+<!--    Tags-->
+<!--  </div>-->
+<!--  <ul class="list-group list-group-flush">-->
+<!--    {% for tag in tags|dictsortreversed:"num_posts"|slice:":5" %}-->
+<!--    <li class="list-group-item d-flex justify-content-between align-items-center">-->
+<!--      <a href="{% url 'blog:tag_post' tag.slug %}" class="card-link">{{ tag.name }}</a>-->
+<!--      <span class="badge bg-secondary rounded-pill">{{ tag.num_posts }}</span>-->
+<!--    </li>-->
+<!--    {% endfor %}-->
+<!--  </ul>-->
+<!--  <div class="card-body text-center">-->
+<!--    <a href="{% url 'blog:tag_list' %}" class="card-link">Show all tags</a>-->
+<!--  </div>-->
+<!--</div>-->
