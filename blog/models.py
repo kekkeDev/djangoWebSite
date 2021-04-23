@@ -10,6 +10,8 @@ from django.utils import timezone
 from mdeditor.fields import MDTextField
 from django.contrib.sites.models import Site
 from django.conf import settings
+import markdown
+from bs4 import BeautifulSoup
 
 class Category(models.Model):
     name = models.CharField(max_length=255)
@@ -72,6 +74,10 @@ class Post(models.Model):
     def __str__(self):
         return self.title
 
+    def getToc(self):
+        tocAll = markdown.markdown(self.content, extensions=['toc'])
+        soup = BeautifulSoup(tocAll, "html.parser")
+        return soup.select_one('.toc')
 
 class ContentImage(models.Model):
     post = models.ForeignKey(Post, on_delete=models.PROTECT)

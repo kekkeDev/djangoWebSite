@@ -35,6 +35,14 @@
     </main>
     <aside class="col-md-4">
       {% include "blog/snippets/sidebar.html" %}
+      <div class="card mb-3 fixed">
+          <div class="card-header">
+            toc
+          </div>
+        <div class="card-body">
+          <div class="side-toc">{{ object.getToc|safe }}</div>
+        </div>
+      </div>
     </aside>
   </div>
 </div>
