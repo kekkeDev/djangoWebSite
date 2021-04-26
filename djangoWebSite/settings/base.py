@@ -28,6 +28,7 @@ os.environ.setdefault("DJANGO_SETTINGS_MODULE", "djangoWebSite.settings")
 # SECURITY WARNING: don't run with debug turned on in production!
 
 INSTALLED_APPS = [
+    'whitenoise.runserver_nostatic',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
