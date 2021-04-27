@@ -49,6 +49,8 @@ MDEDITOR_CONFIGS = {
     'default': {
         'language': 'en',
         'image_folder': 'editor',
+        'upload_image_formats': ["jpg", "jpeg", "gif", "png"],  # image upload format type
+        # 'upload_image_formats': ["jpg", "jpeg", "gif", "png", "bmp", "webp"],  # image upload format type
     }
 }
 MIDDLEWARE = [
