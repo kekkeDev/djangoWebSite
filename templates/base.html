@@ -47,34 +47,42 @@
     <!-- Section: Social media -->
     <section class="mb-4">
       <!-- Facebook -->
-      <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
-        ><i class="fab fa-facebook-f"></i
-      ></a>
+      {% if site_detail_1.facebook %}
+        <a target="_blank" title="Facebookをフォロー" class="btn btn-outline-light btn-floating m-1" href="https://www.facebook.com/{{ site_detail_1.facebook }}" role="button"
+          ><i class="fab fa-facebook-f"></i
+        ></a>
+      {% endif %}
 
       <!-- Twitter -->
-      <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
-        ><i class="fab fa-twitter"></i
-      ></a>
+      {% if site_detail_1.twitter %}
+        <a target="_blank" title="Twitterをフォロー" class="btn btn-outline-light btn-floating m-1" href="https://twitter.com/{{ site_detail_1.facebook }}" role="button"
+          ><i class="fab fa-twitter"></i
+        ></a>
+      {% endif %}
 
       <!-- Google -->
-      <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
-        ><i class="fab fa-google"></i
-      ></a>
+<!--      <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"-->
+<!--        ><i class="fab fa-google"></i-->
+<!--      ></a>-->
 
       <!-- Instagram -->
-      <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
-        ><i class="fab fa-instagram"></i
-      ></a>
+      {% if site_detail_1.instagram %}
+        <a target="_blank" title="Instagramをフォロー" class="btn btn-outline-light btn-floating m-1" href="https://www.instagram.com/{{ site_detail_1.instagram }}" role="button"
+          ><i class="fab fa-instagram"></i
+        ></a>
+      {% endif %}
 
       <!-- Linkedin -->
-      <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
-        ><i class="fab fa-linkedin-in"></i
-      ></a>
+<!--      <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"-->
+<!--        ><i class="fab fa-linkedin-in"></i-->
+<!--      ></a>-->
 
       <!-- Github -->
-      <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
-        ><i class="fab fa-github"></i
-      ></a>
+      {% if site_detail_1.github %}
+        <a class="btn btn-outline-light btn-floating m-1" href="https://github.com/{{ site_detail_1.github }}" role="button"
+          ><i class="fab fa-github"></i
+        ></a>
+      {% endif %}
     </section>
     <!-- Section: Social media -->
   </div>
@@ -82,8 +90,7 @@
 
   <!-- Copyright -->
   <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
-    © 2020 Copyright:
-    <a class="text-white" href="https://mdbootstrap.com/">{{ site_detail_1.site }}</a>
+    © 2021 - <a class="text-white" href="https://mdbootstrap.com/">{{ site_detail_1.site }}</a>
   </div>
   <!-- Copyright -->
 </footer>

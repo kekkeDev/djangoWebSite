@@ -135,10 +135,3 @@ STATICFILES_DIRS = [
 
 SITE_ID = 1
 ROLEPERMISSIONS_REGISTER_ADMIN = True
-
-CLOUDINARY_STORAGE = {
-    'CLOUD_NAME': 'hvcrpasiw',
-    'API_KEY': '332695448691772',
-    'API_SECRET': 'JgOVlFYvjU6IlppQR65ylBxs2Q0'
-}
-DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'

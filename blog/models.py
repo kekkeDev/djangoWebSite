@@ -150,14 +150,16 @@ class Reply(models.Model):
 
 class SiteDetail(models.Model):
     site = models.OneToOneField(Site, verbose_name='Site', on_delete=models.PROTECT)
-    title = models.CharField('Sites title', max_length=255, default='title')
-    description = models.TextField('Sites description', max_length=255, default='description')
-    keywords = models.CharField('Sites keyword', max_length=255, default='keywords')
+    title = models.CharField('sites title', max_length=255, default='title')
+    description = models.TextField('sites description', max_length=255, default='description')
+    keywords = models.CharField('sites keyword', max_length=255, default='keywords')
     author = models.CharField('author', max_length=255, default='author')
     email = models.EmailField('author E-mail address', max_length=255, default='your_mail@gmail.com')
-    github = models.CharField('Github account', max_length=255, blank=True)
-    twitter = models.CharField('Twitter account', max_length=255, blank=True)
-    facebook = models.CharField('FaceBook account', max_length=255, blank=True)
+    github = models.CharField('github account', max_length=255, blank=True)
+    twitter = models.CharField('twitter account', max_length=255, blank=True)
+    facebook = models.CharField('faceBook account', max_length=255, blank=True)
+    instagram = models.CharField('instagram account', max_length=255, blank=True)
+    linkedin = models.CharField('linkedin account', max_length=255, blank=True)
     google_ad_html = models.TextField('adSense HTML', blank=True)
     google_analytics_html = models.TextField('GA HTML', blank=True)
 

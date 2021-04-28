@@ -14,3 +14,10 @@ DATABASES = {
 }
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME': 'hvcrpasiw',
+    'API_KEY': '332695448691772',
+    'API_SECRET': 'JgOVlFYvjU6IlppQR65ylBxs2Q0'
+}
