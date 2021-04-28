@@ -5,9 +5,6 @@ from blog.models import Post
 
 
 class BlogPostSitemap(Sitemap):
-    """
-    ブログ記事のサイトマップ
-    """
     changefreq = "never"
     priority = 0.8
 
@@ -23,9 +20,6 @@ class BlogPostSitemap(Sitemap):
 
 
 class StaticViewSitemap(Sitemap):
-    """
-    静的ページのサイトマップ
-    """
     changefreq = "daily"
     priority = 0.5
 

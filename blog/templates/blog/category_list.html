@@ -8,7 +8,7 @@
   {% for category in object_list %}
   <li><a href="{% url 'blog:category_post' category.slug %}">{{ category.name }} ({{ category.num_posts }})</a></li>
   {% empty %}
-  <li>カテゴリはありません。</li>
+  <li>no categories</li>
   {% endfor %}
 </ul>
 {% endblock %}

@@ -14,18 +14,9 @@ import os
 import dj_database_url
 from socket import gethostname
 
-# Build paths inside the project like this: os.path.join(BASE_DIR, ...)
-# BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "djangoWebSite.settings")
-
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
-
-# SECURITY WARNING: keep the secret key used in production secret!
-
-# SECURITY WARNING: don't run with debug turned on in production!
 
 INSTALLED_APPS = [
     'whitenoise.runserver_nostatic',
@@ -49,8 +40,7 @@ MDEDITOR_CONFIGS = {
     'default': {
         'language': 'en',
         'image_folder': 'editor',
-        'upload_image_formats': ["jpg", "jpeg", "gif", "png"],  # image upload format type
-        # 'upload_image_formats': ["jpg", "jpeg", "gif", "png", "bmp", "webp"],  # image upload format type
+        'upload_image_formats': ["jpg", "jpeg", "gif", "png"],
     }
 }
 MIDDLEWARE = [
@@ -87,9 +77,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'djangoWebSite.wsgi.application'
 
-# Password validation
-# https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
-
 AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
@@ -105,10 +92,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
-# Internationalization
-# https://docs.djangoproject.com/en/3.0/topics/i18n/
-
 LANGUAGE_CODE = 'ja'
 
 TIME_ZONE = 'Asia/Tokyo'
@@ -119,9 +102,6 @@ USE_L10N = True
 
 USE_TZ = True
 
-
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'staticfiles', 'media_root')
 MEDIA_URL = '/media/'

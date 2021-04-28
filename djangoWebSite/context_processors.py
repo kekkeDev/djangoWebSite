@@ -14,9 +14,6 @@ def common(request):
     return context
 
 def settings_param(request):
-    """
-    DEBUG=Falseの場合に、GoogleアナリティクスのトラッキングIDを返す
-    """
     return {
         'is_debug': settings.DEBUG,
     }
