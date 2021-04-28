@@ -13,11 +13,12 @@ DATABASES = {
     'default': db_from_env
 }
 
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME': os.environ.get('CLOUDINARY_STORAGE_CLOUD_NAME'),
+    'API_KEY': os.environ.get('CLOUDINARY_STORAGE_API_KEY'),
+    'API_SECRET': os.environ.get('CLOUDINARY_STORAGE_API_SECRET')
+}
+
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
-CLOUDINARY_STORAGE = {
-    'CLOUD_NAME': 'hvcrpasiw',
-    'API_KEY': '332695448691772',
-    'API_SECRET': 'JgOVlFYvjU6IlppQR65ylBxs2Q0'
-}
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
