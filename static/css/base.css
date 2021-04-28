@@ -1,0 +1,79 @@
+a {
+    text-decoration:none;
+    color: black;
+}
+a:hover {
+  color: #C0C0C0;
+}
+
+a:active {
+  color: #C0C0C0;
+}
+
+/*ページネーション自体のデザイン*/
+.pagination>li>a {
+  border: none;
+  color: black;
+}
+
+.pagination>li>a:hover {
+  color: #C0C0C0;
+  background: none;
+}
+
+.page-item.active .page-link {
+  color: black;
+  font-weight: bolder;
+  background: none;
+}
+
+.thumbnail {
+    height:15rem;
+}
+
+.thumbnail img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.main-thumbnail {
+     width: 100%;
+     height: auto;
+     max-height: 15rem;
+     object-fit: cover;
+     margin-bottom: 2rem;
+}
+
+.side-toc a{
+  font-weight: bolder;
+  color: grey;
+  font-size:0.8rem
+}
+.side-toc ul {
+	padding:0.5em;
+	list-style-type:none;
+}
+.side-toc  ul>li{
+	position:relative;
+	padding: 0em 0.3em 0.3em 1.3em;
+}
+.side-toc  ul>li:before{
+	position:absolute;
+	content:'';
+	top: 0.5em;
+	left: 0.2em;
+	height:0;
+	width:0;
+	border-style: solid;
+	border-width: 6px 0 6px 9px;
+	border-color: transparent transparent transparent grey;
+}
+
+.fixed{
+  position: sticky;
+  margin-bottom: 0;
+  top: 10px;
+  z-index: 1
+
+}

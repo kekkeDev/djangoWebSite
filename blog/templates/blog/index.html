@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block title %}post_list | {{ block.super }}{% endblock %}
+{% block description %}{{ block.super }}{% endblock %}
+
+{% block content %}
+<div class="container">
+  <div class="row">
+    <div class="col-md-8 mx-auto">
+      {% include "blog/snippets/main_post_list.html" %}
+      {% include "blog/snippets/pagination.html" %}
+      {# {% include "blog/snippets/pagination_b.html" %} #}
+    </div>
+    <aside class="col-md-4">
+      {% include "blog/snippets/sidebar.html" %}
+    </aside>
+  </div>
+</div>
+{% endblock %}

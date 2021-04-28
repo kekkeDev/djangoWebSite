@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block title %}Categories | {{ block.super }}{% endblock %}
+{% block description %}{{ block.super }}{% endblock %}
+
+{% block content %}
+<ul>
+  {% for category in object_list %}
+  <li><a href="{% url 'blog:category_post' category.slug %}">{{ category.name }} ({{ category.num_posts }})</a></li>
+  {% empty %}
+  <li>no categories</li>
+  {% endfor %}
+</ul>
+{% endblock %}
