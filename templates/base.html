@@ -15,6 +15,7 @@
   <link rel="stylesheet" href="{% static 'css/base.css' %}">
   <link rel="icon" href="{% static 'img/favicon.ico' %}">
   {% if is_debug is False %}
+    {{ site_detail_1.google_ad_html|safe }}
     {{ site_detail_1.google_analytics_html|safe }}
   {% endif %}
 </head>
